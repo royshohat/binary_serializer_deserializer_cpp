@@ -1,8 +1,13 @@
 #include <vector>
 #include <concepts>
 #include <type_traits>
+#include <string>
 #include <cstdint>
+#include <fstream>
+#include <iostream>
 
+
+// mechanism that will insure that T has a method serialize that takes Serializer&  
 template <typename T, typename Serializer>
 concept Serializable = requires(T a, Serializer& s){ {a.serialize(s)}; };
 
@@ -27,5 +32,7 @@ public:
     template <typename T>
     requires Serializable<T, Serializer>
     void write(T& value){ value.serialize(*this); }
+
+    void save_to_file(const std::string&);
 
 };
