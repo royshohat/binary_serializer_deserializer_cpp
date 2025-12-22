@@ -5,7 +5,7 @@ struct player{
     char id;
     int number;
 
-    void serialize(Serialization::Serializer& s){
+    void serialize(Serialization::Serializer& s) const {
         s.write(id);
         s.write(number);
     }
@@ -30,6 +30,9 @@ int main(){
 
     player1.number = 123;
     player1.id = 'b';
+
+    delete[] ptr; // dont forget to delete the readen data
+    // this cause .read() actually mallocs (new T[]) for you  
 
     Serialization::Serializer seri;
 

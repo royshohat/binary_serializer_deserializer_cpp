@@ -1,3 +1,5 @@
+#pragma once
+
 #include <vector>
 #include <concepts>
 #include <type_traits>
@@ -6,7 +8,6 @@
 #include <fstream>
 #include <iostream>
 #include <cstring>
-
 
 // mechanism that will insure that T has a method serialize that takes Serializer&  
 template <typename T, typename Serializer>
